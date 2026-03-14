@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 echo "🚀 Iniciando despliegue de PubliAI..."
 
 # 1. Bajar cambios de GitHub
