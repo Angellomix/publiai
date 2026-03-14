@@ -20,7 +20,8 @@ export default function StatsPage() {
                 <TrendingUp size={20} className="text-primary" /> Alcance Estimado
               </h3>
               <select className="bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-xs text-slate-400 outline-none">
-                <Uint8Array /> Últimos 7 días
+                <option>Últimos 7 días</option>
+                <option>Últimos 30 días</option>
               </select>
             </div>
             
