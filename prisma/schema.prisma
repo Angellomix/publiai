@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id            String          @id @default(cuid())
+  name          String?
+  email         String          @unique
+  password      String
+  role          String          @default("USER") // USER o ADMIN
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  subscription  Subscription?
+  configuration Configuration?
+  publications  Publication[]
+}
+
+model Subscription {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  plan      String   @default("LITE") // BASIC, LITE, ADVANCED
+  status    String   @default("ACTIVE")
+  price     Float
+  startDate DateTime @default(now())
+  endDate   DateTime
+}
+
+model Configuration {
+  id             String @id @default(cuid())
+  userId         String @unique
+  user           User   @relation(fields: [userId], references: [id])
+  fbToken        String?
+  fbPageId       String?
+  watermark      String?
+  niche          String?
+  imagesPerDay   Int    @default(6)
+  scheduledDays  String @default("1,2,3,4,5,6,0") // Domingo a Sábado
+  scheduledHours String @default("9,12,15,18,21,0") // Horas por defecto
+  isActive       Boolean @default(true)
+}
+
+model Publication {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  timestamp DateTime @default(now())
+  status    String
+  imageUrl  String?
+  caption   String?
+  platform  String   @default("FACEBOOK")
+}
