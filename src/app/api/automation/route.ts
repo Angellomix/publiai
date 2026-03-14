@@ -3,8 +3,6 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-export const dynamic = "force-dynamic";
-
 // Esta API será consumida por n8n para obtener quién debe publicar ahora
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
