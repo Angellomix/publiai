@@ -11,11 +11,13 @@ rm -rf .next node_modules package-lock.json
 # 3. Instalar todo de nuevo
 npm install
 
-# 4. Generar motor de Prisma (Forzando modo servidor)
+# 4. Preparar Base de Datos y Motor
 export PRISMA_CLIENT_ENGINE_TYPE='library'
 npx prisma generate
+npx prisma migrate deploy
 
-# 5. Compilar la web (Forzando build normal sin Turbopack si es posible)
+# 5. Compilar la web (Modo Standalone optimizado)
 NEXT_TELEMETRY_DISABLED=1 npm run build
 
-echo "✅ Build completado. Ahora puedes correr: npm run start -- -p 3001"
+echo "✅ DESPLIEGUE EXITOSO."
+echo "Para arrancar: npm run start -- -p 3001"
