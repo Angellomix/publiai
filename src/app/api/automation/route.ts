@@ -80,8 +80,8 @@ export async function POST(req: Request) {
   }
 
   try {
-    // @ts-ignore - Evitar error de tipos si el cliente de Prisma no se ha regenerado correctamente
-    const publication = await prisma.publication.create({
+    // @ts-ignore
+    const publication = await (prisma.publication.create as any)({
       data: {
         userId,
         caption,
