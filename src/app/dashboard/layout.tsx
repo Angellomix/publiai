@@ -2,6 +2,8 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import React from "react";
+
+export const dynamic = "force-dynamic";
 import { LayoutDashboard, Settings, Calendar, LogOut, Image as ImageIcon, BarChart3 } from "lucide-react";
 import Link from "next/link";
 import LogoutButton from "@/components/LogoutButton";
