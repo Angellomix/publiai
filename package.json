@@ -11,6 +11,8 @@
   "dependencies": {
     "@prisma/client": "latest",
     "@tailwindcss/postcss": "^4.2.1",
+    "@types/bcrypt": "^6.0.0",
+    "bcrypt": "^6.0.0",
     "clsx": "latest",
     "lucide-react": "latest",
     "next": "latest",
