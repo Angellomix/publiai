@@ -52,5 +52,6 @@ model Publication {
   status    String
   imageUrl  String?
   caption   String?
+  fbPostId  String?
   platform  String   @default("FACEBOOK")
 }
