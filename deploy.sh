@@ -15,7 +15,7 @@ npm install
 export PRISMA_CLIENT_ENGINE_TYPE='library'
 npx prisma generate
 
-# 5. Compilar la web
-npm run build
+# 5. Compilar la web (Forzando build normal sin Turbopack si es posible)
+NEXT_TELEMETRY_DISABLED=1 npm run build
 
 echo "✅ Build completado. Ahora puedes correr: npm run start -- -p 3001"
