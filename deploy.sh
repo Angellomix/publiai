@@ -27,4 +27,4 @@ cp -r .next/static .next/standalone/.next/ 2>/dev/null || true
 
 echo "✅ DESPLIEGUE EXITOSO."
 echo "Para arrancar en producción (Puerto 3001):"
-echo "PORT=3001 node .next/standalone/server.js"
+echo "HOSTNAME=0.0.0.0 PORT=3001 node .next/standalone/server.js"
