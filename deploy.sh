@@ -17,14 +17,11 @@ export PRISMA_CLIENT_ENGINE_TYPE='library'
 npx prisma generate
 npx prisma migrate deploy
 
-# 5. Compilar la web (Modo Standalone optimizado)
+# 5. Compilar la web
 NEXT_TELEMETRY_DISABLED=1 npm run build
 
-# 6. Preparar archivos para modo Standalone
-echo "📦 Preparando archivos estáticos..."
-cp -r public .next/standalone/ 2>/dev/null || true
-cp -r .next/static .next/standalone/.next/ 2>/dev/null || true
+echo "📦 Limpiando procesos antiguos..."
+fuser -k 3001/tcp || true
 
 echo "✅ DESPLIEGUE EXITOSO."
-echo "Para arrancar en producción (Puerto 3001):"
-echo "HOSTNAME=0.0.0.0 PORT=3001 node .next/standalone/server.js"
+echo "Para arrancar: npm run start"

@@ -8,13 +8,6 @@ declare global {
   var prismaGlobal: undefined | ReturnType<typeof prismaClientSingleton>;
 }
 
-// Proxy para inicialización perezosa (Lazy Load)
-// Esto evita que Prisma se inicialice durante la fase de "Collecting page data" del build
-export const prisma = new Proxy({} as PrismaClient, {
-  get: (target, prop) => {
-    if (!globalThis.prismaGlobal) {
-      globalThis.prismaGlobal = prismaClientSingleton();
-    }
-    return (globalThis.prismaGlobal as any)[prop];
-  }
-});
+export const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
+
+if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
